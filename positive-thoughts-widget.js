@@ -15,6 +15,48 @@ class PositiveThoughtsWidget extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		
+		/* Boutons principaux UdeS */
+		.btn-udes,
+		button {
+		  background-color: #018849;     /* vert UdeS (couleur principale) */
+		  color: #ffffff;                /* texte blanc */
+		  padding: 0.6em 1.2em;
+		  font-size: 0.95rem;
+		  font-weight: 600;
+		  border: none;
+		  border-radius: 8px;
+		  text-transform: uppercase;
+		  letter-spacing: 0.5px;
+		  cursor: pointer;
+		  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		/* Variation bordure | fond transparent */
+		.btn-udes-outline,
+		a.btn {
+		  background-color: transparent;
+		  border: 2px solid #018849;
+		  color: #018849;
+		}
+
+		/* Survol pour boutons foncés */
+		.btn-udes:hover,
+		button:hover {
+		  background-color: #016f3b;      /* teinte plus foncée au hover */
+		  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.17);
+		}
+
+		/* Survol pour boutons outlines */
+		.btn-udes-outline:hover,
+		a.btn:hover {
+		  background-color: #018849;
+		  color: #ffffff;
+		  border: 2px solid #018849;
+		}
+
+
+
         .card {
 	  position: relative;   /* ancre le ::before à la carte */
 	  overflow: hidden;     /* empêche le fond de déborder hors du cadre */
@@ -50,12 +92,42 @@ class PositiveThoughtsWidget extends HTMLElement {
         .thought { margin: 0 0 12px; line-height: 1.35; }
         .meta { font-size: 12px; opacity: 0.75; margin: 0 0 12px; }
         .actions { display: flex; gap: 8px; flex-wrap: wrap; }
-        button, a.btn {
-          border: 1px solid #ccc; background: #fff; border-radius: 10px;
-          padding: 8px 10px; cursor: pointer; text-decoration: none; color: inherit;
-          font-size: 14px;
-        }
-        button:hover, a.btn:hover { background: #f6f6f6; }
+        button,
+		a.btn {
+		  border: none;
+		  padding: 0.6em 1.2em;
+		  font-size: 14px;
+		  font-weight: 600;
+		  text-transform: uppercase;
+		  cursor: pointer;
+		  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		/* Bouton principal */
+		button {
+		  background-color: #018849;
+		  color: #fff;
+		  border-radius: 8px;
+		}
+
+		/* Bouton secondaire (lien) */
+		a.btn {
+		  background-color: transparent;
+		  border: 2px solid #018849;
+		  color: #018849;
+		  border-radius: 8px;
+		}
+
+		/* Hover interactions */
+		button:hover {
+		  background-color: #016f3b;
+		  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.17);
+		}
+
+		a.btn:hover {
+		  background-color: #018849;
+		  color: #fff;
+		}
       </style>
       <div class="card" role="region" aria-label="${this._escape(title)}">
         <p class="title">${this._escape(title)}</p>
