@@ -14,19 +14,69 @@ class PositiveThoughtsWidget extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
-        :host { display: block; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-        .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; max-width: 520px; }
+        :host {
+          display: block;
+          font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .card {
+          position: relative;
+          border: 1px solid #ddd;
+          border-radius: 12px;
+          padding: 16px;
+          max-width: 520px;
+          overflow: hidden;
+          background: #ffffff;
+        }
+
+        /* Image de fond (filigrane) */
+        .card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+
+          /* IMPORTANT:
+             - Mets le fichier image à côté du JS (ex: /widgets/siteIcon.png)
+             - ou remplace par une URL absolue si nécessaire.
+          */
+          background-image: url("UdS.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 140%;
+
+          /* Atténuation */
+          opacity: 0.12;
+          filter: saturate(0.6) brightness(1.1);
+
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        /* Contenu au-dessus du fond */
+        .card > * {
+          position: relative;
+          z-index: 1;
+        }
+
         .title { font-weight: 700; margin: 0 0 8px; }
         .thought { margin: 0 0 12px; line-height: 1.35; }
         .meta { font-size: 12px; opacity: 0.75; margin: 0 0 12px; }
         .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
         button, a.btn {
-          border: 1px solid #ccc; background: #fff; border-radius: 10px;
-          padding: 8px 10px; cursor: pointer; text-decoration: none; color: inherit;
+          border: 1px solid #ccc;
+          background: #fff;
+          border-radius: 10px;
+          padding: 8px 10px;
+          cursor: pointer;
+          text-decoration: none;
+          color: inherit;
           font-size: 14px;
         }
+
         button:hover, a.btn:hover { background: #f6f6f6; }
       </style>
+
       <div class="card" role="region" aria-label="${this._escape(title)}">
         <p class="title">${this._escape(title)}</p>
         <p class="thought" id="thought">Chargement…</p>
@@ -58,7 +108,7 @@ class PositiveThoughtsWidget extends HTMLElement {
 
   async _loadFromJson(url) {
     const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Impossible de charger le JSON (${res.status})`);
+    if (!res.ok) throw new Error(\`Impossible de charger le JSON (\${res.status})\`);
     const data = await res.json();
     // attendu: { thoughts: [{text, lang, source?}] }
     this.thoughts = Array.isArray(data?.thoughts) ? data.thoughts : [];
@@ -85,7 +135,10 @@ class PositiveThoughtsWidget extends HTMLElement {
   }
 
   _escape(s) {
-    return String(s).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    return String(s)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
   }
 }
 
