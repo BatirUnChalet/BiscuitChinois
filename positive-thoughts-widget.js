@@ -16,6 +16,23 @@ class PositiveThoughtsWidget extends HTMLElement {
       <style>
         :host { display: block; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
         .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; max-width: 520px; }
+		/* Image de fond (filigrane) */
+        .card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image: url('UdS.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 140%;
+
+          /* Atténuation */
+          opacity: 0.12;
+          filter: saturate(0.6) brightness(1.1);
+
+          z-index: 0;
+          pointer-events: none;
+        }
         .title { font-weight: 700; margin: 0 0 8px; }
         .thought { margin: 0 0 12px; line-height: 1.35; }
         .meta { font-size: 12px; opacity: 0.75; margin: 0 0 12px; }
@@ -24,7 +41,6 @@ class PositiveThoughtsWidget extends HTMLElement {
           border: 1px solid #ccc; background: #fff; border-radius: 10px;
           padding: 8px 10px; cursor: pointer; text-decoration: none; color: inherit;
           font-size: 14px;
-		  
         }
         button:hover, a.btn:hover { background: #f6f6f6; }
       </style>
