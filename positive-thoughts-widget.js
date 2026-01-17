@@ -39,7 +39,7 @@ class PositiveThoughtsWidget extends HTMLElement {
              - Mets le fichier image à côté du JS (ex: /widgets/siteIcon.png)
              - ou remplace par une URL absolue si nécessaire.
           */
-          background-image: url("UdS.png");
+          background-image: url("./UdS.png");
           background-repeat: no-repeat;
           background-position: center;
           background-size: 140%;
