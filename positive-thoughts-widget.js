@@ -15,7 +15,15 @@ class PositiveThoughtsWidget extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-        .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; max-width: 520px; }
+        .card {
+	  position: relative;   /* ancre le ::before à la carte */
+	  overflow: hidden;     /* empêche le fond de déborder hors du cadre */
+	  border: 1px solid #ddd;
+	  border-radius: 12px;
+	  padding: 16px;
+	  max-width: 520px;
+	  background: #fff;
+	  }
 		/* Image de fond (filigrane) */
         .card::before {
           content: "";
