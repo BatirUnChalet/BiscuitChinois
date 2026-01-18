@@ -1,0 +1,51 @@
+name: "Suggestion de pensée"
+description: "Proposer une nouvelle pensée à ajouter au widget"
+title: "[Suggestion] "
+labels: ["suggestion", "triage"]
+assignees:
+  - batirunchalet
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci pour votre contribution.
+        Veuillez proposer une pensée courte, positive et non offensive.
+
+  - type: textarea
+    id: pensee
+    attributes:
+      label: Pensée proposée
+      description: "Texte exact (court, clair)."
+      placeholder: "Ex.: Je progresse un peu chaque jour."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: langue
+    attributes:
+      label: Langue
+      options:
+        - fr
+        - en
+        - autre
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source (optionnel)
+      description: "Auteur, ouvrage, lien, ou 'original'."
+      placeholder: "Original"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: droits
+    attributes:
+      label: Droits et consentement
+      description: "Requis pour publier la pensée."
+      options:
+        - label: "Je confirme que ce texte peut être publié et redistribué."
+          required: true
