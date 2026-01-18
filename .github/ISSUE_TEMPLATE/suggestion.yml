@@ -1,5 +1,5 @@
-name: "Suggestion de pensée"
-description: "Proposer une nouvelle pensée à ajouter au widget"
+name: "Suggestion"
+description: "Soumettre une suggestion de pensée positive à ajouter au widget."
 title: "[Suggestion] "
 labels: ["suggestion", "triage"]
 assignees:
@@ -9,43 +9,32 @@ body:
   - type: markdown
     attributes:
       value: |
-        Merci pour votre contribution.
         Veuillez proposer une pensée courte, positive et non offensive.
+        Merci pour votre contribution.
 
   - type: textarea
     id: pensee
     attributes:
-      label: Pensée proposée
-      description: "Texte exact (court, clair)."
+      label: Ma suggestion
+      description: "Que proposez-vous?"
       placeholder: "Ex.: Je progresse un peu chaque jour."
-    validations:
-      required: true
-
-  - type: dropdown
-    id: langue
-    attributes:
-      label: Langue
-      options:
-        - fr
-        - en
-        - autre
     validations:
       required: true
 
   - type: input
     id: source
     attributes:
-      label: Source (optionnel)
-      description: "Auteur, ouvrage, lien, ou 'original'."
-      placeholder: "Original"
+      label: Auteur (facultatif)
+      description: "A qui attribuer cette suggestion?"
+      placeholder: "Anonyme"
     validations:
       required: false
 
   - type: checkboxes
     id: droits
     attributes:
-      label: Droits et consentement
-      description: "Requis pour publier la pensée."
+      label: Confirmation
+      description: "Requis."
       options:
-        - label: "Je confirme que ce texte peut être publié et redistribué."
+        - label: "Je confirme que ma suggestion est positive et non offensive."
           required: true
