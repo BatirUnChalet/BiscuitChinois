@@ -71,7 +71,7 @@ class PositiveThoughtsWidget extends HTMLElement {
           content: "";
           position: absolute;
           inset: 0;
-          background-image: url('UdS.png');
+          background-image: url('biscuit.png');
           background-repeat: no-repeat;
           background-position: center;
           background-size: 140%;
